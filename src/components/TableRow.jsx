@@ -1,23 +1,23 @@
 import React from "react";
 
-function TableRow({ product, incrementQty, decrementQty }) {
+function TableRow({ product, incrementQty, decrementQty, removeItem }) {
 
   return (
     <tr>
-      <td>{product.item}</td>
+      <td>{product.title}</td>
       <td>
         <button
           onClick={() => decrementQty(product.id)}
-          disabled={product.quantity === 1}
+          disabled={product.qty === 1}
         >
           −
         </button>
-        <span style={{ margin: "0 10px" }}>{product.quantity}</span>
+        <span style={{ margin: "0 10px" }}>{product.qty}</span>
         <button onClick={() => incrementQty(product.id)}>+</button>
       </td>
-      <td>{product.itemPrice}</td>
-      <td>{product.quantity * product.itemPrice}</td>
-      <td><span style={{color: '#f00', cursor: 'pointer'}}>X</span></td>
+      <td>{product.price}</td>
+      <td>{product.qty * product.price}</td>
+      <td><span style={{color: '#f00', cursor: 'pointer'}} onClick={()=>removeItem(product.id)}>X</span></td>
     </tr>
   );
 }

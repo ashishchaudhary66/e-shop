@@ -6,13 +6,13 @@
   margin: 15px;
   text-align: center;
   background-color: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .Card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .card-image {
@@ -41,15 +41,28 @@
   margin-top: 10px;
 }
 
-.card-add-cart{
-    display: flex;
-    background-color: #1e90ff;
-    font-size: small;
-    padding: 5px;
-    border-radius: 5px;
-    color: #fff;
-    font-weight: 600;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+.card-add-cart {
+  display: flex;
+  background-color: #1e90ff;
+  font-size: small;
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 600;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.card-remove-cart {
+  display: flex;
+  background-color: #f00;
+  font-size: small;
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 600;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }

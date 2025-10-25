@@ -4,9 +4,11 @@ import icon from "../images/shopify.png";
 import cart from "../images/cart.png";
 import "./Header.css";
 import CartTable from "./CartTable";
+import { useSelector } from "react-redux";
 
 function Header() {
   const [visible, setVisible] = useState(false);
+  const cartItems = useSelector((state) => state.cart.cartItems)
 
   return (
     <header className="Header">
@@ -16,7 +18,9 @@ function Header() {
       </div>
 
       <div className="header-cart" onClick={() => setVisible(true)}>
-        <span className="cart-counter">{10}</span>
+        {
+          cartItems.length>0 && <span className="cart-counter">{cartItems.length}</span>
+        }
         <img src={cart} alt="Cart" width={30} height={30} />
       </div>
 
