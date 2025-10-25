@@ -1,7 +1,7 @@
 import React from "react";
 
 function TableRow({ product, incrementQty, decrementQty, removeItem }) {
-
+    const totalPrice = (product.qty * product.price).toFixed(2);
   return (
     <tr>
       <td>{product.title}</td>
@@ -16,7 +16,7 @@ function TableRow({ product, incrementQty, decrementQty, removeItem }) {
         <button onClick={() => incrementQty(product.id)}>+</button>
       </td>
       <td>{product.price}</td>
-      <td>{product.qty * product.price}</td>
+      <td>{totalPrice}</td>
       <td><span style={{color: '#f00', cursor: 'pointer'}} onClick={()=>removeItem(product.id)}>X</span></td>
     </tr>
   );
