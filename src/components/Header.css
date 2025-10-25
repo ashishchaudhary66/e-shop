@@ -1,0 +1,66 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  background-color: #007ad9; 
+  color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.header-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-cart {
+  position: relative;
+  cursor: pointer;
+}
+
+.cart-counter {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+.p-dialog .p-dialog-header {
+  background-color: #007ad9 !important;
+  color: white !important;
+  font-weight: bold;
+  border-top-left-radius: 12px !important;
+  border-top-right-radius: 12px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.p-dialog .p-dialog-content {
+  background-color: #f9f9f9 !important;
+  padding: 20px !important;
+  border-bottom-left-radius: 12px !important;
+  border-bottom-right-radius: 12px !important;
+}
+
+.dialog-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+.dialog-header{
+    display: flex;
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.p-dialog-header-icon{
+    padding: 1rem;
+    color: #f9f9f9;
+}

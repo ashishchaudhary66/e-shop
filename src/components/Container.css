@@ -1,0 +1,8 @@
+.Container{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1080px;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
