@@ -1,10 +1,12 @@
+import { ADD_TO_CART, REMOVE_FROM_CART, UPDATE_QTY } from "../types/cartTypes";
+
 const initialState = {
   cartItems: [],
 };
 
 export const cartReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_TO_CART':
+    case ADD_TO_CART:
       const item = action.payload;
       const existItem = state.cartItems.find(i => i.id === item.id);
       if (existItem) {
@@ -18,13 +20,13 @@ export const cartReducer = (state = initialState, action) => {
         return { ...state, cartItems: [...state.cartItems, { ...item, qty: 1 }] };
       }
 
-    case 'REMOVE_FROM_CART':
+    case REMOVE_FROM_CART:
       return {
         ...state,
         cartItems: state.cartItems.filter(i => i.id !== action.payload),
       };
 
-    case 'UPDATE_QTY':
+    case UPDATE_QTY:
       return {
         ...state,
         cartItems: state.cartItems.map(i =>

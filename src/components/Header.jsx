@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { Dialog } from "primereact/dialog";
 import icon from "../images/shopify.png";
-import cart from "../images/cart.png";
 import "./Header.css";
 import CartTable from "./CartTable";
 import { useSelector } from "react-redux";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 function Header() {
   const [visible, setVisible] = useState(false);
   const cartItems = useSelector((state) => state.cart.cartItems);
+  const wishlistItems = useSelector((state) => state.wishlist.wishlistItems);
 
   return (
     <header className="Header">
@@ -17,11 +19,19 @@ function Header() {
         <h1 className="header-text">E-shop</h1>
       </div>
 
-      <div className="header-cart" onClick={() => setVisible(true)}>
-        {cartItems.length > 0 && (
-          <span className="cart-counter">{cartItems.length}</span>
-        )}
-        <img src={cart} alt="Cart" width={30} height={30} />
+      <div className="header-cart">
+        <div style={{ position: "relative", cursor: "pointer"}} onClick={() => setVisible(true)}>
+          {cartItems.length > 0 && (
+            <span className="cart-counter">{cartItems.length}</span>
+          )}
+          <ShoppingCartIcon fontSize="large"/>
+        </div>
+        <div style={{ position: "relative", cursor: "pointer" }} onClick={() => setVisible(true)}>
+          {wishlistItems.length > 0 && (
+            <span className="cart-counter">{wishlistItems.length}</span>
+          )}
+          <FavoriteIcon fontSize="large" />
+        </div>
       </div>
 
       <Dialog
@@ -37,7 +47,7 @@ function Header() {
           padding: "0",
           height: "80vh",
         }}
-        contentStyle={{backgroundColor: "#f9f9f9" }}
+        contentStyle={{ backgroundColor: "#f9f9f9" }}
         onHide={() => setVisible(false)}
         draggable={false}
         resizable={false}
@@ -45,8 +55,6 @@ function Header() {
       >
         <CartTable />
       </Dialog>
-
-      
     </header>
   );
 }

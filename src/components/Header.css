@@ -19,7 +19,8 @@
 
 .header-cart {
   position: relative;
-  cursor: pointer;
+  display: flex;
+  gap: 1rem;
 }
 
 .cart-counter {
@@ -65,4 +66,5 @@
 .p-dialog-header-icon{
     padding: 1rem;
     color: #f9f9f9;
+    outline: none;
 }
