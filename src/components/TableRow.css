@@ -1,0 +1,13 @@
+.quantity-cell{
+    width: 150px;
+}
+.quantity-cell button {
+  background: #ffffff;
+  border: 1px solid #ccc;
+  padding: 2px 5px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin: 0 5px;
+}

@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 function Header() {
   const [visible, setVisible] = useState(false);
-  const cartItems = useSelector((state) => state.cart.cartItems)
+  const cartItems = useSelector((state) => state.cart.cartItems);
 
   return (
     <header className="Header">
@@ -18,9 +18,9 @@ function Header() {
       </div>
 
       <div className="header-cart" onClick={() => setVisible(true)}>
-        {
-          cartItems.length>0 && <span className="cart-counter">{cartItems.length}</span>
-        }
+        {cartItems.length > 0 && (
+          <span className="cart-counter">{cartItems.length}</span>
+        )}
         <img src={cart} alt="Cart" width={30} height={30} />
       </div>
 
@@ -31,14 +31,22 @@ function Header() {
           </div>
         }
         visible={visible}
-        style={{ width: "50vw", borderRadius: "12px", padding: "0" }}
-        contentStyle={{ padding: "20px", backgroundColor: "#f9f9f9" }}
+        style={{
+          width: "85vw",
+          borderRadius: "12px",
+          padding: "0",
+          height: "80vh",
+        }}
+        contentStyle={{backgroundColor: "#f9f9f9" }}
         onHide={() => setVisible(false)}
         draggable={false}
         resizable={false}
+        blockScroll={true}
       >
         <CartTable />
       </Dialog>
+
+      
     </header>
   );
 }

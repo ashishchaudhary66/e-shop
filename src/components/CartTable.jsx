@@ -1,3 +1,4 @@
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./CartTable.css";
 import TableRow from "./TableRow";
@@ -27,44 +28,57 @@ function CartTable() {
   );
 
   return (
-    <div className="CartTable" style={{ padding: "10px" }}>
-      {
-        cartProducts.length>0 ? 
-        <table
-        border="1"
-        cellPadding="8"
-        style={{ borderCollapse: "collapse", width: "100%", textAlign: "center" }}
-      >
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Quantity</th>
-            <th>Item Price ($)</th>
-            <th>Total Price ($)</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cartProducts.map((product) => (
-            <TableRow
-              key={product.id}
-              product={product}
-              incrementQty={() => incrementQty(product.id, product.qty)}
-              decrementQty={() => decrementQty(product.id, product.qty)}
-              removeItem={() => handleRemove(product.id)}
-            />
-          ))}
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colSpan="3" style={{ textAlign: "right", fontWeight: "bold", paddingRight: "1rem" }}>
-              Grand Total
-            </td>
-            <td style={{ fontWeight: "bold" }}>${grandTotal.toFixed(2)}</td>
-          </tr>
-        </tfoot>
-      </table>: <div><h2>Empty Cart</h2></div>
-      }
+    <div className="CartTable">
+      {cartProducts.length > 0 ? (
+        <>
+          <div className="table-container">
+            <table
+              border="1"
+              cellPadding="8"
+              style={{
+                borderRadius: "10px",
+                borderCollapse: "collapse",
+                width: "100%",
+                textAlign: "center",
+              }}
+            >
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Description</th>
+                  <th>Quantity</th>
+                  <th>Item Price ($)</th>
+                  <th>Total Price ($)</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cartProducts.map((product) => (
+                  <TableRow
+                    key={product.id}
+                    product={product}
+                    incrementQty={() =>
+                      incrementQty(product.id, product.qty)
+                    }
+                    decrementQty={() =>
+                      decrementQty(product.id, product.qty)
+                    }
+                    removeItem={() => handleRemove(product.id)}
+                  />
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="cart-footer">
+            <h3>Grand Total: ${grandTotal.toFixed(2)}</h3>
+          </div>
+        </>
+      ) : (
+        <div className="empty-cart">
+          <h2>Your Cart is Empty</h2>
+        </div>
+      )}
     </div>
   );
 }
