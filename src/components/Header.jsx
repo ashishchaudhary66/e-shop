@@ -6,9 +6,11 @@ import CartTable from "./CartTable";
 import { useSelector } from "react-redux";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import WishlistTable from "./WishlistTable";
 
 function Header() {
-  const [visible, setVisible] = useState(false);
+  const [visibleCart, setVisibleCart] = useState(false);
+  const [visibleWishlist, setVisibleWishlist] = useState(false);
   const cartItems = useSelector((state) => state.cart.cartItems);
   const wishlistItems = useSelector((state) => state.wishlist.wishlistItems);
 
@@ -20,13 +22,13 @@ function Header() {
       </div>
 
       <div className="header-cart">
-        <div style={{ position: "relative", cursor: "pointer"}} onClick={() => setVisible(true)}>
+        <div style={{ position: "relative", cursor: "pointer"}} onClick={() => setVisibleCart(true)}>
           {cartItems.length > 0 && (
             <span className="cart-counter">{cartItems.length}</span>
           )}
           <ShoppingCartIcon fontSize="large"/>
         </div>
-        <div style={{ position: "relative", cursor: "pointer" }} onClick={() => setVisible(true)}>
+        <div style={{ position: "relative", cursor: "pointer" }} onClick={() => setVisibleWishlist(true)}>
           {wishlistItems.length > 0 && (
             <span className="cart-counter">{wishlistItems.length}</span>
           )}
@@ -40,7 +42,7 @@ function Header() {
             <h3>Your Cart</h3>
           </div>
         }
-        visible={visible}
+        visible={visibleCart}
         style={{
           width: "85vw",
           borderRadius: "12px",
@@ -48,12 +50,34 @@ function Header() {
           height: "80vh",
         }}
         contentStyle={{ backgroundColor: "#f9f9f9" }}
-        onHide={() => setVisible(false)}
+        onHide={() => setVisibleCart(false)}
         draggable={false}
         resizable={false}
         blockScroll={true}
       >
         <CartTable />
+      </Dialog>
+
+      <Dialog
+        header={
+          <div className="dialog-header">
+            <h3>Your Wishlist</h3>
+          </div>
+        }
+        visible={visibleWishlist}
+        style={{
+          width: "85vw",
+          borderRadius: "12px",
+          padding: "0",
+          height: "80vh",
+        }}
+        contentStyle={{ backgroundColor: "#f9f9f9" }}
+        onHide={() => setVisibleWishlist(false)}
+        draggable={false}
+        resizable={false}
+        blockScroll={true}
+      >
+        <WishlistTable />
       </Dialog>
     </header>
   );

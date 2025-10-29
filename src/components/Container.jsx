@@ -1,24 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./Container.css";
 import Card from "./Card";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../redux/actions/productActions";
 
 function Container() {
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.product.products);
+
   useEffect(() => {
-    axios
-      .get("https://fakestoreapi.com/products")
-      .then((response) => {
-        console.log(response.data);
-        setProducts(response.data);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
   return (
     <div className="Container">
-      {products.map((product, index) => {
-        return <Card key={index} product={product} />;
-      })}
+      {products.length > 0 ? (
+        products.map((product, index) => (
+          <Card key={index} product={product} />
+        ))
+      ) : (
+        <p>Loading products...</p>
+      )}
     </div>
   );
 }

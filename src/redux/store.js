@@ -2,10 +2,12 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import { thunk } from "redux-thunk";
 import { cartReducer } from "./reducers/cartReducer";
 import { wishlistReducer } from "./reducers/wishlistReducer";
+import { productReducer } from "./reducers/productReducer";
 
 const rootReducer = combineReducers({
   cart: cartReducer,
   wishlist: wishlistReducer,
+  product: productReducer,
 });
 
 const persistedCart = localStorage.getItem("cartState")

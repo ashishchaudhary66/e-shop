@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../redux/actions/cartActions";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { addToWishlist, removeFromWishlist } from "../redux/actions/wishlistActions";
+import { useNavigate } from "react-router-dom";
 
 function Card({ product }) {
+  const navigate = useNavigate();
   const cartItems = useSelector((state) => state.cart.cartItems);
   const wishlistItems = useSelector((state) => state.wishlist.wishlistItems);
   const isCartItemAvailable = cartItems.find((item) => item.id === product.id);
@@ -13,7 +15,7 @@ function Card({ product }) {
   const dispatch = useDispatch();
   return (
     <div className="Card">
-      <div>
+      <div onClick={() => {navigate(`/products/${product.id}`) }} style={{cursor: 'pointer', position: 'relative'}}>
         {
           isWishlistItemAvailable?
             <FavoriteIcon 
