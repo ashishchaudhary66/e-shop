@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FETCH_PRODUCT_DETAILS, FETCH_PRODUCTS } from "../types/productTypes";
+import { FETCH_PRODUCT_DETAILS_FAILURE, FETCH_PRODUCT_DETAILS_REQUEST, FETCH_PRODUCT_DETAILS_SUCCESS, FETCH_PRODUCTS } from "../types/productTypes";
 
 export const fetchProducts = () => async (dispatch) => {
   try {
@@ -14,15 +14,19 @@ export const fetchProducts = () => async (dispatch) => {
   }
 };
 
-export const fetchProductDetails = (id) => async (dispatch) => {
+export const fetchProductDetails = (id) => async (dispatch, action) => {
   try {
+    dispatch({ type: FETCH_PRODUCT_DETAILS_REQUEST });
     const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
-    console.log("Fetched product details:", response.data);
     dispatch({
-      type: FETCH_PRODUCT_DETAILS,
+      type: FETCH_PRODUCT_DETAILS_SUCCESS,
       payload: response.data,
     });
   } catch (error) {
     console.error("Error fetching data:", error);
+    dispatch({
+      type: FETCH_PRODUCT_DETAILS_FAILURE,
+      payload: error.message,
+    });
   }
 };

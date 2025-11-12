@@ -1,83 +1,95 @@
 import React, { useState } from "react";
-import { Dialog } from "primereact/dialog";
-import icon from "../images/shopify.png";
-import "./Header.css";
-import CartTable from "./CartTable";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  IconButton,
+  Badge,
+  Box,
+  Typography,
+} from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import CloseIcon from "@mui/icons-material/Close";
 import { useSelector } from "react-redux";
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import CartTable from "./CartTable";
 import WishlistTable from "./WishlistTable";
+import icon from "../images/e_shop.png";
+import "./Header.css";
 
 function Header() {
-  const [visibleCart, setVisibleCart] = useState(false);
-  const [visibleWishlist, setVisibleWishlist] = useState(false);
+  const [openCart, setOpenCart] = useState(false);
+  const [openWishlist, setOpenWishlist] = useState(false);
   const cartItems = useSelector((state) => state.cart.cartItems);
   const wishlistItems = useSelector((state) => state.wishlist.wishlistItems);
 
   return (
     <header className="Header">
+      {/* Logo */}
       <div className="header-icon">
-        <img src={icon} alt="Logo" width={30} height={30} />
-        <h1 className="header-text">E-shop</h1>
+        <img src={icon} alt="Logo" width={40} height={40} />
+        <h1 className="header-text">shop</h1>
       </div>
 
+      {/* Cart + Wishlist Icons */}
       <div className="header-cart">
-        <div style={{ position: "relative", cursor: "pointer"}} onClick={() => setVisibleCart(true)}>
-          {cartItems.length > 0 && (
-            <span className="cart-counter">{cartItems.length}</span>
-          )}
-          <ShoppingCartIcon fontSize="large"/>
-        </div>
-        <div style={{ position: "relative", cursor: "pointer" }} onClick={() => setVisibleWishlist(true)}>
-          {wishlistItems.length > 0 && (
-            <span className="cart-counter">{wishlistItems.length}</span>
-          )}
-          <FavoriteIcon fontSize="large" />
-        </div>
+        <IconButton color="inherit" onClick={() => setOpenCart(true)}>
+          <Badge badgeContent={cartItems.length} color="error">
+            <ShoppingCartIcon fontSize="large" />
+          </Badge>
+        </IconButton>
+
+        <IconButton color="inherit" onClick={() => setOpenWishlist(true)}>
+          <Badge badgeContent={wishlistItems.length} color="error">
+            <FavoriteIcon fontSize="large" />
+          </Badge>
+        </IconButton>
       </div>
 
+      {/* CART DIALOG */}
       <Dialog
-        header={
-          <div className="dialog-header">
-            <h3>Your Cart</h3>
-          </div>
-        }
-        visible={visibleCart}
-        style={{
-          width: "85vw",
-          borderRadius: "12px",
-          padding: "0",
-          height: "80vh",
+        open={openCart}
+        onClose={() => setOpenCart(false)}
+        fullWidth
+        maxWidth="lg"
+        PaperProps={{
+          sx: { borderRadius: "16px", backgroundColor: "#fafafa" },
         }}
-        contentStyle={{ backgroundColor: "#f9f9f9" }}
-        onHide={() => setVisibleCart(false)}
-        draggable={false}
-        resizable={false}
-        blockScroll={true}
       >
-        <CartTable />
+        <DialogTitle sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography variant="h6" fontWeight="bold">
+            🛒 Your Cart
+          </Typography>
+          <IconButton onClick={() => setOpenCart(false)}>
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent dividers>
+          <CartTable />
+        </DialogContent>
       </Dialog>
 
+      {/* WISHLIST DIALOG */}
       <Dialog
-        header={
-          <div className="dialog-header">
-            <h3>Your Wishlist</h3>
-          </div>
-        }
-        visible={visibleWishlist}
-        style={{
-          width: "85vw",
-          borderRadius: "12px",
-          padding: "0",
-          height: "80vh",
+        open={openWishlist}
+        onClose={() => setOpenWishlist(false)}
+        fullWidth
+        maxWidth="lg"
+        PaperProps={{
+          sx: { borderRadius: "16px", backgroundColor: "#fafafa" },
         }}
-        contentStyle={{ backgroundColor: "#f9f9f9" }}
-        onHide={() => setVisibleWishlist(false)}
-        draggable={false}
-        resizable={false}
-        blockScroll={true}
       >
-        <WishlistTable />
+        <DialogTitle sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography variant="h6" fontWeight="bold">
+            ❤️ Your Wishlist
+          </Typography>
+          <IconButton onClick={() => setOpenWishlist(false)}>
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent dividers>
+          <WishlistTable />
+        </DialogContent>
       </Dialog>
     </header>
   );

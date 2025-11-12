@@ -1,8 +1,10 @@
-import { FETCH_PRODUCT_DETAILS, FETCH_PRODUCTS } from "../types/productTypes";
+import { FETCH_PRODUCT_DETAILS_FAILURE, FETCH_PRODUCT_DETAILS_REQUEST, FETCH_PRODUCT_DETAILS_SUCCESS, FETCH_PRODUCTS } from "../types/productTypes";
 
 const initialState = {
   products: [],
-  selectedProduct: null,
+  productDetails: {},
+  isLoading: false,
+  error: null,
 };
 
 export const productReducer = (state = initialState, action) => {
@@ -14,11 +16,14 @@ export const productReducer = (state = initialState, action) => {
         };
       }
 
-    case FETCH_PRODUCT_DETAILS:
-      return {
-        ...state,
-        selectedProduct: action.payload,
-      };
+    case FETCH_PRODUCT_DETAILS_REQUEST:
+      return { ...state, isLoading: true, error: null };
+
+    case FETCH_PRODUCT_DETAILS_SUCCESS:
+      return { ...state, isLoading: false, productDetails: action.payload };
+
+    case FETCH_PRODUCT_DETAILS_FAILURE:
+      return { ...state, isLoading: false, error: action.payload };
 
     default:
       return state;

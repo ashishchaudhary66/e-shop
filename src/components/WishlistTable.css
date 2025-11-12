@@ -1,104 +1,14 @@
 .wishlist-table-wrapper {
-  padding: 16px;
-  background: #fff;
-  border-radius: 6px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-}
-
-.wishlist-header {
-  margin-bottom: 12px;
-}
-
-.wishlist-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.wishlist-table thead th {
-  padding: 10px 12px;
-  font-weight: 600;
-  color: #333;
-  border-bottom: 1px solid #e6e6e6;
-}
-
-.wishlist-row td {
-  padding: 12px;
-  vertical-align: middle;
-  border-bottom: 1px solid #f2f2f2;
-}
-
-.product-cell {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.product-image {
-  width: 64px;
-  height: 64px;
-  object-fit: cover;
-  border-radius: 4px;
-  background: #fafafa;
-  border: 1px solid #eee;
-}
-
-.product-info .product-name {
-  font-size: 14px;
-  font-weight: 600;
-  color: #222;
-}
-
-.product-variant {
-  font-size: 12px;
-  color: #666;
-  margin-top: 4px;
-}
-
-.price-cell {
-  width: 120px;
-  text-align: center;
-  color: #111;
-  font-weight: 600;
-}
-
-.actions-cell {
-  width: 220px;
-  text-align: right;
-}
-
-.btn {
-  cursor: pointer;
-  display: inline-block;
-  padding: 8px 12px;
-  border-radius: 4px;
-  border: none;
-  font-size: 13px;
-}
-
-.btn + .btn {
-  margin-left: 8px;
-}
-
-.btn-secondary {
-  background: #1976d2;
-  color: #fff;
-}
-
-.btn-danger {
-  background: #e53935;
-  color: #fff;
+  font-family: "Poppins", sans-serif;
 }
 
 .wishlist-empty {
   text-align: center;
-  padding: 40px 20px;
-  color: #444;
+  padding: 3rem;
+  color: #888;
+  font-size: 1.4rem;
 }
 
-.browse-btn {
-  margin-top: 12px;
-  background: #333;
-  color: #fff;
-  text-decoration: none;
+button {
+  cursor: pointer;
 }

@@ -3,6 +3,7 @@ import "./Container.css";
 import Card from "./Card";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../redux/actions/productActions";
+import Loader from "./Loader";
 
 function Container() {
   const dispatch = useDispatch();
@@ -19,7 +20,9 @@ function Container() {
           <Card key={index} product={product} />
         ))
       ) : (
-        <p>Loading products...</p>
+        <p className="center-loader">
+          <Loader />
+        </p>
       )}
     </div>
   );
