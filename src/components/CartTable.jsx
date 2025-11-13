@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Table,
@@ -12,15 +12,24 @@ import {
   IconButton,
   Box,
   Divider,
+  Button,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { removeFromCart, updateQty } from "../redux/actions/cartActions";
+import OrderNotification from "./OrderNotification";
+import { addToOrderHistory } from "../redux/actions/orderHistoryActions";
 
-function CartTable() {
+function CartTable({setOpenCart}) {
   const cartProducts = useSelector((state) => state.cart.cartItems);
+  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
+
+  const handlePlaceOrder = () => {
+    setOpen(true);
+    dispatch(addToOrderHistory({items:cartProducts}));
+  };
 
   const incrementQty = (id, qty) => {
     dispatch(updateQty(id, qty + 1));
@@ -45,7 +54,7 @@ function CartTable() {
     return (
       <Box textAlign="center" py={5}>
         <Typography variant="h5" color="text.secondary">
-          🛒 Your Cart is Empty
+           Your Cart is Empty
         </Typography>
       </Box>
     );
@@ -154,12 +163,17 @@ function CartTable() {
           display: "flex",
           justifyContent: "flex-end",
           pr: 2,
+          gap: 3,
         }}
       >
         <Typography variant="h6" fontWeight="bold">
           Grand Total: ${grandTotal.toFixed(2)}
         </Typography>
+        <Button variant="contained" color="success"  onClick={handlePlaceOrder}>
+          Place Order
+        </Button>
       </Box>
+      <OrderNotification open={open} onClose={() => setOpen(false)} setOpenCart={setOpenCart} />
     </Box>
   );
 }

@@ -53,7 +53,7 @@ function WishlistTable() {
     return (
       <Box textAlign="center" py={5}>
         <Typography variant="h5" color="text.secondary">
-          ❤️ Your Wishlist is Empty
+          Your Wishlist is Empty
         </Typography>
       </Box>
     );

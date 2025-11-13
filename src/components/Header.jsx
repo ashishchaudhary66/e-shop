@@ -5,7 +5,6 @@ import {
   DialogContent,
   IconButton,
   Badge,
-  Box,
   Typography,
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -16,6 +15,7 @@ import CartTable from "./CartTable";
 import WishlistTable from "./WishlistTable";
 import icon from "../images/e_shop.png";
 import "./Header.css";
+import { Link } from "react-router-dom";
 
 function Header() {
   const [openCart, setOpenCart] = useState(false);
@@ -25,14 +25,22 @@ function Header() {
 
   return (
     <header className="Header">
-      {/* Logo */}
       <div className="header-icon">
         <img src={icon} alt="Logo" width={40} height={40} />
         <h1 className="header-text">shop</h1>
       </div>
 
-      {/* Cart + Wishlist Icons */}
       <div className="header-cart">
+        <Link to="/" style={{ textDecoration: 'none' }}>
+        <Typography variant="h6" color="#fff" >
+          Home
+        </Typography>
+      </Link>
+      <Link to="/orders" style={{ textDecoration: 'none' }}>
+        <Typography variant="h6" color="#fff">
+          Orders
+        </Typography>
+      </Link>
         <IconButton color="inherit" onClick={() => setOpenCart(true)}>
           <Badge badgeContent={cartItems.length} color="error">
             <ShoppingCartIcon fontSize="large" />
@@ -46,7 +54,6 @@ function Header() {
         </IconButton>
       </div>
 
-      {/* CART DIALOG */}
       <Dialog
         open={openCart}
         onClose={() => setOpenCart(false)}
@@ -58,18 +65,17 @@ function Header() {
       >
         <DialogTitle sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography variant="h6" fontWeight="bold">
-            🛒 Your Cart
+            Your Cart
           </Typography>
           <IconButton onClick={() => setOpenCart(false)}>
             <CloseIcon />
           </IconButton>
         </DialogTitle>
         <DialogContent dividers>
-          <CartTable />
+          <CartTable setOpenCart = {setOpenCart} />
         </DialogContent>
       </Dialog>
 
-      {/* WISHLIST DIALOG */}
       <Dialog
         open={openWishlist}
         onClose={() => setOpenWishlist(false)}
@@ -81,7 +87,7 @@ function Header() {
       >
         <DialogTitle sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography variant="h6" fontWeight="bold">
-            ❤️ Your Wishlist
+            Your Wishlist
           </Typography>
           <IconButton onClick={() => setOpenWishlist(false)}>
             <CloseIcon />

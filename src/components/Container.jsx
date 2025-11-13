@@ -20,9 +20,9 @@ function Container() {
           <Card key={index} product={product} />
         ))
       ) : (
-        <p className="center-loader">
+        <div className="center-loader">
           <Loader />
-        </p>
+        </div>
       )}
     </div>
   );
