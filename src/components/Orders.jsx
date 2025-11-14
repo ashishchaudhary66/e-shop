@@ -59,7 +59,7 @@ export default function Orders() {
           </TableHead>
 
           <TableBody>
-            {orders.reverse().map((order, index) => (
+            {orders.sort((a, b) => new Date(b.date) - new Date(a.date)).map((order, index) => (
               <TableRow
                 key={index}
                 hover

@@ -25,7 +25,7 @@ export default function OrderSummary() {
   if (!order) {
     return (
       <div style={{ textAlign: "center", padding: "50px" }}>
-        <h2>📦 Order not found</h2>
+        <h2> Order not found</h2>
       </div>
     );
   }
@@ -122,7 +122,7 @@ export default function OrderSummary() {
                         sx={{ mt: 0.5, fontWeight: "bold" }}
                         component="div"
                       >
-                        ${item.price}
+                        ${item.price} * {item.qty || 1} = ${(item.price * (item.qty || 1)).toFixed(2)}
                       </Typography>
                     </Box>
                   }

@@ -19,7 +19,7 @@ export const orderHistoryReducer = (state = initialState, action) => {
         }
         return {
             ...state,
-            orders: [...state.orders, order],
+            orders: [order, ...state.orders],
         };
     }
     case CHANGE_ORDER_STATUS: {
