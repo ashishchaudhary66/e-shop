@@ -4,7 +4,6 @@ import { FETCH_PRODUCT_DETAILS_FAILURE, FETCH_PRODUCT_DETAILS_REQUEST, FETCH_PRO
 export const fetchProducts = () => async (dispatch) => {
   try {
     const response = await axios.get(`https://fakestoreapi.com/products`);
-    console.log("Fetched products:", response.data);
     dispatch({
       type: FETCH_PRODUCTS,
       payload: response.data,
