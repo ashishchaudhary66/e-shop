@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Surge Deployed
+
+This project is deployed on Surge and URL is https://threatening-birthday.surge.sh/.
+
 ## Available Scripts
 
 In the project directory, you can run:
