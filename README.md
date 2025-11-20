@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Surge Deployed
 
-This project is deployed on Surge and URL is https://threatening-birthday.surge.sh/.
+This project is deployed on Surge and URL is http://solid-club.surge.sh/.
 
 ## Available Scripts
 
