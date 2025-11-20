@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Surge Deployed
 
-This project is deployed on Surge and URL is http://solid-club.surge.sh/.
+This project is deployed on Surge and URL is http://workable-iron.surge.sh/.
 
 ## Available Scripts
 
