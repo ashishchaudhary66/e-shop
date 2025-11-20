@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import OrderStatus from "./OrderStatus";
+import OrderStatus from "../components/OrderStatus";
 
 export default function OrderSummary() {
   const { orderId } = useParams();

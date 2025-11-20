@@ -18,7 +18,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CategoryIcon from "@mui/icons-material/Category";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import Loader from "./Loader";
+import Loader from "../components/Loader";
 import { fetchProductDetails } from "../redux/actions/productActions";
 import { addToCart, removeFromCart } from "../redux/actions/cartActions";
 import { addToWishlist, removeFromWishlist } from "../redux/actions/wishlistActions";

@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import "./Container.css";
-import Card from "./Card";
+import "./Home.css";
+import Card from "../components/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../redux/actions/productActions";
-import Loader from "./Loader";
+import Loader from "../components/Loader";
 
-function Container() {
+function Home() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product.products);
 
@@ -28,4 +28,4 @@ function Container() {
   );
 }
 
-export default Container;
+export default Home;

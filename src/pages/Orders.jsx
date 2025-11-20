@@ -12,7 +12,7 @@ import {
   Typography,
   Box,
 } from "@mui/material";
-import OrderStatus from "./OrderStatus";
+import OrderStatus from "../components/OrderStatus";
 
 export default function Orders() {
   const navigate = useNavigate();

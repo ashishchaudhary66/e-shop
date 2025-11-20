@@ -15,6 +15,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
 }
 
 .header-text {
@@ -27,7 +28,22 @@
 .header-cart {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 1rem;
+}
+
+.hamburger-menu {
+  display: none !important;
+}
+
+@media (max-width: 500px) {
+  .header-cart a,
+  .header-cart .MuiIconButton-root:not(.hamburger-menu) {
+    display: none !important;
+  }
+
+  .hamburger-menu {
+    display: block !important;
+  }
 }
 
 .MuiDialog-paper {
